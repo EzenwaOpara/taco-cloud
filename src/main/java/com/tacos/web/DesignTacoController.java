@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.validation.Errors;
@@ -71,6 +72,7 @@ public class DesignTacoController {
 
     @PostMapping
     public String processDesign(@Valid Taco design, Errors errors) {
+        design.setCreatedAt(new Date(System.currentTimeMillis()));
         if (errors.hasErrors()) {
             return "design";
         }

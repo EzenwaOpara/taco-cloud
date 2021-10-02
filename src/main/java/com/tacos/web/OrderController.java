@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 /*
  * Created by Benjamin
@@ -17,7 +18,7 @@ import javax.validation.Valid;
  */
 @Slf4j
 @Controller
-@RequestMapping("/order")
+@RequestMapping("/orders")
 public class OrderController {
 
     @GetMapping("/current")
@@ -32,6 +33,7 @@ public class OrderController {
             return "orderForm";
         }
 
+        order.setPlaceAt(new Date(System.currentTimeMillis()));
         log.info("Order submitted: " + order);
         return "redirect:/";
     }
