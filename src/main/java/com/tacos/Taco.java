@@ -17,12 +17,14 @@ import java.util.List;
 @Data
 public class Taco {
 
+    private long id;
+
     @NotBlank
     @Size(min = 3, message = "Name must be at least 5 characters long")
     private String name;
 
     @Size(min = 1, message = "You must choose at least 1 ingredient")
-    private List<String> ingredients;
+    private List<Ingredient> ingredients;
 
     @FutureOrPresent
     private Date createdAt;

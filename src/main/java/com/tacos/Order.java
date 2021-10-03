@@ -13,11 +13,16 @@ import javax.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
-public class Order {
+public class Order implements Serializable {
+
+    private long id;
+    private List<Taco> tacos;
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -44,5 +49,9 @@ public class Order {
     private String ccCVV;
 
     @FutureOrPresent
-    private Date placeAt;
+    private Date placedAt;
+
+    public void addDesign(Taco design) {
+        this.tacos.add(design);
+    }
 }
